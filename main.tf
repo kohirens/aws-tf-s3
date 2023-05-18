@@ -7,11 +7,6 @@ resource "aws_s3_bucket" "main" {
   force_destroy = var.force_destroy
 }
 
-resource "aws_s3_bucket_acl" "main" {
-  bucket = aws_s3_bucket.main.bucket
-  acl    = "log-delivery-write"
-}
-
 resource "aws_s3_bucket_versioning" "main" {
   bucket = aws_s3_bucket.main.bucket
   versioning_configuration {
