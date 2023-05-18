@@ -25,16 +25,6 @@ resource "aws_s3_bucket_lifecycle_configuration" "main" {
     id     = "${local.shared_name}-rule"
     status = "Enabled"
 
-    filter {
-      and {
-        prefix = var.access_log_prefix
-        tags = {
-          rule      = "${local.shared_name}-rule"
-          autoclean = "true"
-        }
-      }
-    }
-
     transition {
       days          = var.days_to_standard_ia
       storage_class = "STANDARD_IA" # or "ONEZONE_IA"

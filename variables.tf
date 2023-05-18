@@ -1,8 +1,3 @@
-variable "access_log_prefix" {
-  description = "Prefix used for Access logs in the access log bucket."
-  type        = string
-}
-
 variable "aws_account" {
   description = "AWS account ID."
   type        = string
