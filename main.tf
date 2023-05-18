@@ -22,31 +22,31 @@ resource "aws_s3_bucket_versioning" "main" {
 resource "aws_s3_bucket_lifecycle_configuration" "main" {
   bucket = aws_s3_bucket.main.bucket
   rule {
-    id     = "${local.shared_name}-logs-rule"
+    id     = "${local.shared_name}-rule"
     status = "Enabled"
 
     filter {
       and {
         prefix = var.access_log_prefix
         tags = {
-          rule      = "${local.shared_name}-logs-rule"
+          rule      = "${local.shared_name}-rule"
           autoclean = "true"
         }
       }
     }
 
     transition {
-      days          = 45
+      days          = var.days_to_standard_ia
       storage_class = "STANDARD_IA" # or "ONEZONE_IA"
     }
 
     transition {
-      days          = 90
+      days          = var.days_to_glacier
       storage_class = "GLACIER"
     }
 
     expiration {
-      days = 183
+      days = var.days_to_expire
     }
   }
 }

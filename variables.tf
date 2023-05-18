@@ -19,6 +19,21 @@ variable "bucket_name" {
   type        = string
 }
 
+variable "days_to_standard_ia" {
+  default = 45
+  description = "Days before transitioning files to standard IA."
+}
+
+variable "days_to_glacier" {
+  default = 90
+  description = "Days before transitioning files to glacier."
+}
+
+variable "days_to_expire" {
+  default = 183
+  description = "Days before deleting files."
+}
+
 variable "environment" {
   description = "Designated environment label, for example: prod, beta, test, non-prod, etc."
   type        = string
