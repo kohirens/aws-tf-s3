@@ -1,0 +1,9 @@
+# Directories
+# -----------
+/.idea/
+.terraform/
+
+# Files
+# -----
+.terraform.lock.hcl
+/terraform-test-results.xml
